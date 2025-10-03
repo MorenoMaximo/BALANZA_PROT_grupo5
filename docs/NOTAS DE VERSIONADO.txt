@@ -1,0 +1,6 @@
+v0.1 	- Prototipo de prueba de Balanza
+        //Prueba las funcionalidades de la celda de carga con el HX711
+        //Pines asignados al programador
+
+v0.2    - Agregamos el ENCODER
+        //Agrega la MEF del encoder, juntos a sus pines correspondientes

@@ -1,0 +1,148 @@
+Disassembly Listing for PIC_BOARD_TEMPLATE_C
+Generated From:
+C:/Users/nahue/Dropbox/_Taller 5to/Desarrollo/MPLABX/PIC_BOARD_TEMPLATE_C.X/dist/proteus/debug/PIC_BOARD_TEMPLATE_C.X.debug.elf
+13/08/2018 09:33:54
+
+---  C:/Users/nahue/Dropbox/_Taller 5to/Desarrollo/MPLABX/PIC_BOARD_TEMPLATE_C.X/main.c  ----------------
+1:             /*
+2:              * Nombre del archivo:   main.c
+3:              * Autor:
+4:              *
+5:              * Descripción: 
+6:              *        Este programa espera que se presione una tecla y luego enciende       *
+7:              *        un led.
+8:              */
+9:             
+10:            #include <xc.h>
+11:            #include <stdint.h>
+12:            
+13:            #include "max7219.h"
+14:            
+15:            #define _XTAL_FREQ  4000000L
+16:            
+17:            #define PIN_LED1    PORTEbits.RE2
+18:            #define TRIS_LED1   TRISEbits.TRISE2
+19:            
+20:            #define PIN_LED2    PORTEbits.RE1
+21:            #define TRIS_LED2   TRISEbits.TRISE1
+22:            
+23:            #define PIN_LED3    PORTEbits.RE0
+24:            #define TRIS_LED3   TRISEbits.TRISE0
+25:            
+26:            #define PIN_TEC1    PORTBbits.RB0
+27:            #define TRIS_TEC1   TRISBbits.TRISB0
+28:            
+29:            #define PIN_TEC2    PORTBbits.RB1
+30:            #define TRIS_TEC2   TRISBbits.TRISB1
+31:            
+32:            // CONFIG1
+33:            //#pragma config FOSC = XT           // Oscillator Selection bits (XT oscillator: Crystal/resonator on RA6/OSC2/CLKOUT and RA7/OSC1/CLKIN)
+34:            #pragma config FOSC = INTRC_NOCLKOUT // Oscillator Selection bits (INTOSCIO oscillator: I/O function on RA6/OSC2/CLKOUT pin, I/O function on RA7/OSC1/CLKIN)
+35:            #pragma config WDTE = OFF       // Watchdog Timer Enable bit (WDT disabled and can be enabled by SWDTEN bit of the WDTCON register)
+36:            #pragma config PWRTE = OFF      // Power-up Timer Enable bit (PWRT disabled)
+37:            #pragma config MCLRE = ON       // RE3/MCLR pin function select bit (RE3/MCLR pin function is MCLR)
+38:            #pragma config CP = OFF         // Code Protection bit (Program memory code protection is disabled)
+39:            #pragma config CPD = OFF        // Data Code Protection bit (Data memory code protection is disabled)
+40:            #pragma config BOREN = OFF      // Brown Out Reset Selection bits (BOR disabled)
+41:            #pragma config IESO = OFF       // Internal External Switchover bit (Internal/External Switchover mode is disabled)
+42:            #pragma config FCMEN = OFF      // Fail-Safe Clock Monitor Enabled bit (Fail-Safe Clock Monitor is disabled)
+43:            #pragma config LVP = OFF        // Low Voltage Programming Enable bit (RB3 pin has digital I/O, HV on MCLR must be used for programming)
+44:            
+45:            // CONFIG2
+46:            #pragma config BOR4V = BOR40V   // Brown-out Reset Selection bit (Brown-out Reset set to 4.0V)
+47:            #pragma config WRT = OFF        // Flash Program Memory Self Write Enable bits (Write protection off)
+48:            
+49:            void gpio_config();
+50:            
+51:            void interrupt isr() {
+0004  00FE     MOVWF 0x7E
+52:                
+53:            }
+0035  0873     MOVF 0x73, W
+0036  00FF     MOVWF 0x7F
+0037  0872     MOVF 0x72, W
+0038  008A     MOVWF PCLATH
+0039  0871     MOVF 0x71, W
+003A  0084     MOVWF FSR
+003B  0E70     SWAPF __pcstackCOMMON, W
+003C  0083     MOVWF STATUS
+003D  0EFE     SWAPF 0x7E, F
+003E  0E7E     SWAPF 0x7E, W
+003F  0009     RETFIE
+54:            
+55:            void main(void) {
+56:                gpio_config();              // Inicializo las entradas y salidas
+0019  120A     BCF PCLATH, 0x4
+001A  118A     BCF PCLATH, 0x3
+001B  2040     CALL 0x40
+001C  120A     BCF PCLATH, 0x4
+001D  118A     BCF PCLATH, 0x3
+57:                
+58:                PIN_LED1 = 0;               // Apago el LED1
+001E  1283     BCF STATUS, 0x5
+001F  1303     BCF STATUS, 0x6
+0020  1109     BCF PORTE, 0x2
+59:                PIN_LED2 = 0;
+0021  1089     BCF PORTE, 0x1
+60:                PIN_LED3 = 0;
+0022  1009     BCF PORTE, 0x0
+61:                /*
+62:                max7219_config();
+63:                max7219_write(REG_DIGIT_0, 0b00000000);
+64:                max7219_write(REG_DIGIT_1, 0b01100000);
+65:                max7219_write(REG_DIGIT_2, 0b01100000);
+66:                max7219_write(REG_DIGIT_3, 0b01100000);
+67:                max7219_write(REG_DIGIT_4, 0b01100000);
+68:                max7219_write(REG_DIGIT_5, 0b01111100);
+69:                max7219_write(REG_DIGIT_6, 0b01111100);
+70:                max7219_write(REG_DIGIT_7, 0b00000000);
+71:                */
+72:                while(1) {                  // Super loop
+0034  2823     GOTO 0x23
+73:                    if( PIN_TEC1 == 0 ) {   // Espero que se presione la TEC1
+0023  1283     BCF STATUS, 0x5
+0024  1303     BCF STATUS, 0x6
+0025  1806     BTFSC PORTB, 0x0
+0026  2829     GOTO 0x29
+74:                        PIN_LED1 = 1;       // Enciendo el LED1
+0027  1509     BSF PORTE, 0x2
+75:                        PIN_LED3 = 1;
+0028  1409     BSF PORTE, 0x0
+76:                    }
+77:                    if( PIN_TEC2 == 0 ) {
+0029  1C86     BTFSS PORTB, 0x1
+78:                        PIN_LED2 = 1;
+002A  1489     BSF PORTE, 0x1
+79:                    }
+80:                    
+81:                    __delay_ms(10);
+002B  300D     MOVLW 0xD
+002C  00F5     MOVWF 0x75
+002D  30FB     MOVLW 0xFB
+002E  00F4     MOVWF 0x74
+002F  0BF4     DECFSZ 0x74, F
+0030  282F     GOTO 0x2F
+0031  0BF5     DECFSZ 0x75, F
+0032  282F     GOTO 0x2F
+0033  2834     GOTO 0x34
+0034  2823     GOTO 0x23
+82:                }
+83:                
+84:                return;
+85:            }
+86:            
+87:            void gpio_config() {
+88:                TRIS_TEC1 = 1;              // Configuro la TEC1 como entrada
+0040  1683     BSF STATUS, 0x5
+0041  1303     BCF STATUS, 0x6
+0042  1406     BSF PORTB, 0x0
+89:                TRIS_TEC2 = 1;              // Configuro la TEC2 como entrada
+0043  1486     BSF PORTB, 0x1
+90:                TRIS_LED1 = 0;              // Configuro el LED1 como salida
+0044  1109     BCF PORTE, 0x2
+91:                TRIS_LED2 = 0;
+0045  1089     BCF PORTE, 0x1
+92:                TRIS_LED3 = 0;
+0046  1009     BCF PORTE, 0x0
+93:            }
+0047  0008     RETURN
