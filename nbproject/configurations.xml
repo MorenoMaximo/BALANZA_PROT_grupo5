@@ -2,6 +2,7 @@
 <configurationDescriptor version="65">
   <logicalFolder name="root" displayName="root" projectFiles="true">
     <logicalFolder name="docs" displayName="docs" projectFiles="true">
+      <itemPath>readme.md</itemPath>
     </logicalFolder>
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
@@ -28,7 +29,6 @@
       <itemPath>hx711.c</itemPath>
       <itemPath>uart.c</itemPath>
     </logicalFolder>
-    <itemPath>docs/readme</itemPath>
   </logicalFolder>
   <sourceRootList>
     <Elem>.</Elem>
