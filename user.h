@@ -18,49 +18,30 @@
 /* User Level #define Macros                                                 */
 /* TODO: Los parámetros de user.c pueden ponerse aquí */
     
-//Encoder
-#define PIN_SCK         PORTAbits.RA4
-#define TRIS_SCK        TRISAbits.TRISA4
+//HX711
+#define PIN_SCK         PORTAbits.RA0
+#define TRIS_SCK        TRISAbits.TRISA0
 
-#define PIN_DT          PORTAbits.RA3
-#define TRIS_DT         TRISAbits.TRISA3
+#define PIN_DT          PORTAbits.RA1
+#define TRIS_DT         TRISAbits.TRISA1
 
 //Leds
-#define TRIS_LED1       TRISEbits.TRISE2
-#define PIN_LED1        PORTEbits.RE2
-
-#define TRIS_LED2       TRISEbits.TRISE1
-#define PIN_LED2        PORTEbits.RE1
-
-#define TRIS_LED3       TRISEbits.TRISE0
-#define PIN_LED3        PORTEbits.RE0
-
-#define TRIS_TEC1       TRISBbits.TRISB0
-#define PIN_TEC1        PORTBbits.RB0
-
-#define TRIS_TEC2       TRISBbits.TRISB1
-#define PIN_TEC2        PORTBbits.RB1
-
-#define TRIS_TEC3       TRISBbits.TRISB2
-#define PIN_TEC3        PORTBbits.RB2
-
-#define TRIS_TEC4       TRISBbits.TRISB3
-#define PIN_TEC4        PORTBbits.RB3
-
-//Alias de los Leds
-#define	TRIS_LED_R      TRIS_LED1 
-#define	PIN_LED_R       PIN_LED1
-
-#define	TRIS_LED_AM     TRIS_LED2
-#define	PIN_LED_AM      PIN_LED2
-
-#define	TRIS_LED_V      TRIS_LED3
-#define PIN_LED_V       PIN_LED3
+#define TRIS_LED       TRISCbits.TRISC2
+#define PIN_LED        PORTCbits.RC2
 
 //Buzzer
 #define TRIS_BUZZER     TRISCbits.TRISC0
 #define PIN_BUZZER      PORTCbits.RC0
 
+//Encoder
+#define TRIS_ENCA   TRISAbits.TRISA2
+#define PIN_ENCA	PORTAbits.RA2
+
+#define TRIS_ENCB	TRISAbits.TRISA3
+#define PIN_ENCB	PORTAbits.RA3
+
+#define TRIS_ENC_SW	TRISBbits.TRISB5
+#define PIN_ENC_SW	PORTBbits.RB5
 /*==================[tipos de datos declarados por el usuario]===============*/
 
 /*==================[declaraciones de datos externos]========================*/

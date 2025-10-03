@@ -1,6 +1,7 @@
 # Balanza Medidora de Suero para PIC16F887
-Para trabajar con el compilador XC8(v2.40) con MPLABX IDE v5.30
+Para trabajar con el compilador XC8(v2.40) con MPLABX IDE v6.20
 
+##Versión Actual: 0.2
 ## Módulos disponibles
 Nombre|Descripcion
 ------|-----------
@@ -15,11 +16,18 @@ Alumno|Mauricio Solis
 Alumno|Valentino Falcinelli
 Alumno|Joaquín Ruiz Aranda
 Alumno|Leandro Rojas
+Curso|6ºElectrónica
+Año|2025
 
-## Notas de Versionado
+# Notas de Versionado
+***Recuerda*** **adición o cambio**(en negro :black_large_square:), **cambio temporal**(en azul :blue_square:) y **eliminación**(en rojo :red_square:)
+
 v0.1 	- Prototipo de prueba de Balanza
-        //Prueba las funcionalidades de la celda de carga con el HX711
-        //Pines asignados al programador
+        :black_large_square:Prueba las funcionalidades de la celda de carga con el HX711
+        :black_large_square:Pines asignados al programador
 
 v0.2    - Agregamos el ENCODER
-        //Agrega la MEF del encoder, juntos a sus pines correspondientes
+        :black_large_square:Agrega la MEF del encoder, juntos a sus pines correspondientes
+        :black_large_square:Pines asignados a la plaqueta definitiva
+        :blue_square:Temporalmente dejamos comentado el código de de la celda de carga
+        :red_square:Sacamos los pines de las teclas y leds que no corresponden a la plaqueta final ya que no existen

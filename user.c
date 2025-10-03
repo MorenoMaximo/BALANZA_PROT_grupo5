@@ -43,24 +43,25 @@ void appInit(void) {
     /* TODO: Inicializar Ports/Periféricos/Interrupciones */
 
     /* Configura funciones analógicas y dirección de los Ports de I/O */
-    ANSEL = 0;
+    ANSEL  = 0;
     ANSELH = 0;
     
-    TRIS_TEC1 = 1;
-    TRIS_TEC2 = 1;
-    TRIS_TEC3 = 1;
-    
-    TRIS_LED_R = 0;
-    TRIS_LED_AM = 0;
-    TRIS_LED_V = 0;
+    //Pines Genericos
+    TRIS_LED    = 0;   
     TRIS_BUZZER = 0;
 
-    //Configuraciones del LCD y del HX711
+    //Configuracion del HX711
     TRIS_DT     = 1;
     TRIS_SCK    = 0;
     
-    uartInit();
-    __delay_ms(100); //Espera que se estabilice la fuente
+    //Configuracion del Encoder
+    TRIS_ENCA   = 1;
+    TRIS_ENCB   = 1;
+    TRIS_ENC_SW = 1;
+    
+    //Configuraciones externas
+    uartInit();         //Configuracion de la UART
+    __delay_ms(100);    //Espera que se estabilice la fuente
     
     /* TODO: Habilita Interrupciones si es necesario*/
     //...IE = 1;     //Habilita la interrupcion ...
