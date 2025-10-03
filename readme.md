@@ -1,7 +1,7 @@
 # Balanza Medidora de Suero para PIC16F887
 Para trabajar con el compilador XC8(v2.40) con MPLABX IDE v5.30
 
-##Módulos disponibles
+## Módulos disponibles
 Nombre|Descripcion
 ------|-----------
 `uart`|Permite el manejo del Puerto Serie
