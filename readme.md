@@ -23,11 +23,11 @@ Año|2025
 ***Recuerda*** **adición o cambio**(en negro :black_large_square:), **cambio temporal**(en azul :blue_square:) y **eliminación**(en rojo :red_square:)
 
 v0.1 	- Prototipo de prueba de Balanza
-        :black_large_square:Prueba las funcionalidades de la celda de carga con el HX711
-        :black_large_square:Pines asignados al programador
+:black_large_square: Prueba las funcionalidades de la celda de carga con el HX711
+:black_large_square: Pines asignados al programador
 
 v0.2    - Agregamos el ENCODER
-        :black_large_square:Agrega la MEF del encoder, juntos a sus pines correspondientes
-        :black_large_square:Pines asignados a la plaqueta definitiva
-        :blue_square:Temporalmente dejamos comentado el código de de la celda de carga
-        :red_square:Sacamos los pines de las teclas y leds que no corresponden a la plaqueta final ya que no existen
+:black_large_square: Agrega la MEF del encoder, juntos a sus pines correspondientes
+:black_large_square: Pines asignados a la plaqueta definitiva
+:blue_square: Temporalmente dejamos comentado el código de de la celda de carga
+:red_square: Sacamos los pines de las teclas y leds que no corresponden a la plaqueta final ya que no existen
