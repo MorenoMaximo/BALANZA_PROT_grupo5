@@ -11,11 +11,7 @@ Nombre|Descripcion
 ## Datos del grupo
 Campo|Detalle
 -----|-------
-Alumno|Máximo Moreno
-Alumno|Mauricio Solis
-Alumno|Valentino Falcinelli
-Alumno|Joaquín Ruiz Aranda
-Alumno|Leandro Rojas
+Alumnos|Máximo Moreno, Mauricio Solis, Valentino Falcinelli, Joaquín Ruiz Aranda y Leandro Rojas
 Curso|6ºElectrónica
 Año|2025
 
