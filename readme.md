@@ -13,8 +13,8 @@ Nombre|Descripcion
 Campo|Detalle
 -----|-------
 Alumnos|Máximo Moreno, Mauricio Solis,
-Valentino Falcinelli, Leandro Rojas,
-Joaquín Ruiz Aranda
+|Valentino Falcinelli, Leandro Rojas,
+|Joaquín Ruiz Aranda
 Curso|6ºElectrónica
 Año|2025
 
