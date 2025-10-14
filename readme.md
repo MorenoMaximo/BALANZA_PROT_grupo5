@@ -12,9 +12,7 @@ Nombre|Descripcion
 ## Datos del grupo :busts_in_silhouette:
 Campo|Detalle
 -----|-------
-Alumnos|Máximo Moreno, Mauricio Solis,
-|Valentino Falcinelli, Leandro Rojas,
-|Joaquín Ruiz Aranda
+Alumnos|Máximo Moreno, Mauricio Solis,<br>Valentino Falcinelli, Leandro Rojas,<br>Joaquín Ruiz Aranda
 Curso|6ºElectrónica
 Año|2025
 
