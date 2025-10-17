@@ -22,6 +22,7 @@
 #include "uart.h"
 #include "system.h"
 #include "hx711.h"
+#include "tick.h"
 
 /*==================[definiciones y macros]==================================*/
 // Nuevo tipo de datos enumerado llamado estadoMEF_t
@@ -33,7 +34,7 @@ estadoENC_t  estadoActualENCODER;       // Variable de estado (global)
 estadoTEC_ENC_t estadoActualTEC_ENC;    // Variable de estado (global)
 tick_t tTEC_ENC;
 tick_t tMEDICION;
-
+char empezarMedicion = 0;
 /*==================[declaraciones de funciones internas]====================*/
 //MEF de rotacion del ENCODER
 void InicializarENCODER(void);
@@ -46,58 +47,27 @@ void ActualizarTEC_ENCODER(void);
 //Codigo principal
 void main(void) {
     appInit();                  //Inicializo las entradas y salidas
+    
+    //Inicializamos las Máquinas de Estados
     InicializarENCODER();
     InicializarTEC_ENCODER();
 //    uint8_t numMuestra = 0;
-//    unsigned long peso;
+    unsigned long peso;
+    uint16_t tiempoDeMuestra = 0;
     
     while(1) {
-        ActualizarENCODER();
-        InicializarTEC_ENCODER();
         
-//        if(PIN_TEC1 == 0) {         //Setear el peso en 0
-//            PIN_LED_R = 1;
-//            __delay_ms(20);         //delay de seguridad por el boton
-//            
-//            peso = TaraSet();
-//            __delay_ms(1);
-//            PIN_LED_R = 0;
-//            
-//            while(PIN_TEC1 == 0);
-//            __delay_ms(20);         //delay de seguridad por el boton            
-//        }
-//        
-//        if(PIN_TEC2 == 0) {         //Una sola muestra
-//            __delay_ms(20);         //delay de seguridad por el boton
-//            PIN_LED_AM = 1;
-//            
-//            peso = LecturaPeso();
-//            printf("%lu\n", peso);
-//            
-//            __delay_ms(1);
-//            PIN_LED_AM = 0;
-//            
-//            while(PIN_TEC2 == 0);
-//            __delay_ms(20);         //delay de seguridad por el boton            
-//        }
-//        
-//        if(PIN_TEC3 == 0) {
-//            __delay_ms(20);         //delay de seguridad por el boton
-//            PIN_LED_V = 1;
-//            
-//            while(peso != 0 && numMuestra < 100) {
-//                peso = LecturaPeso();
-//                printf("%lu , %d\n", peso, numMuestra++);
-//                __delay_ms(100);
-//            }
-//            PIN_LED_V = 0;
-//            numMuestra = 0;
-//            __delay_ms(20);         //delay de seguridad por el boton            
-//        }
-//        
-//        if(PIN_TEC4 == 0) {
-//            printf("stop\n");
-//        }
+        //Comprobamos constantemente los estados del ENCODER 
+        ActualizarENCODER();
+        ActualizarTEC_ENCODER();
+        
+        if(empezarMedicion) {
+            tMEDICION = tickRead();
+            peso = HX711Read();
+            tiempoDeMuestra = (tickRead() - tMEDICION);
+            printf("Tiempo que tardo: %d", tiempoDeMuestra);
+            empezarMedicion = 0;
+        }
     }
 }   //Fin del main()
 
@@ -150,39 +120,39 @@ void ActualizarENCODER(void) {
 }
 
 void InicializarTEC_ENCODER(void) {
-    estadoTEC_ENC_t = SUELTO;
+    estadoActualTEC_ENC = SUELTO;
     tTEC_ENC = tickRead();
 }
 void ActualizarTEC_ENCODER(void) {
-    switch (estadoTEC_ENC_t) {
+    switch (estadoActualTEC_ENC) {
         case SUELTO:
             if(PIN_TEC_ENC == 0) {          // Chequear condiciones de transición de estado
-                estadoTEC_ENC_t = BAJANDO;  // Cambiar a otro estado
+                estadoActualTEC_ENC = BAJANDO;  // Cambiar a otro estado
                 tTEC_ENC = tickRead();      // También inicia temporizacion
             } 
             break;
         case BAJANDO:
             if(PIN_TEC_ENC == 1) {
-                estadoTEC_ENC_t = SUELTO;
+                estadoActualTEC_ENC = SUELTO;
             }
             else if((tickRead() - tTEC_ENC) > 40) {
-                estadoTEC_ENC_t = PRESIONADO;
+                estadoActualTEC_ENC = PRESIONADO;
             }
             break;
         case PRESIONADO:
             if(PIN_TEC_ENC == 1) {
-                estadoTEC_ENC_t = SUBIENDO;
+                estadoActualTEC_ENC = SUBIENDO;
                 tTEC_ENC = tickRead();
             }
             break;
         case SUBIENDO:
             if(PIN_TEC_ENC == 0) {
-                estadoTEC_ENC_t = PRESIONADO;
+                estadoActualTEC_ENC = PRESIONADO;
             }
             else if((tickRead() - tTEC_ENC) > 40) {
-                estadoTEC_ENC_t = SUELTO;
+                estadoActualTEC_ENC = SUELTO;
+                empezarMedicion = 1;
             }
-            break;
             break;
     }
 }
