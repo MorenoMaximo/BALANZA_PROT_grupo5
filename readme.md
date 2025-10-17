@@ -1,13 +1,14 @@
 # Balanza Medidora de Suero para PIC16F887
 Para trabajar con el compilador XC8(v2.40) con MPLABX IDE v6.20
 
-## Versión Actual: 0.2 :floppy_disk:
+## Versión Actual: 0.3.1 :floppy_disk:
 
 ## Módulos disponibles :computer: 
 Nombre|Descripcion
 ------|-----------
 `uart`|Permite el manejo del Puerto Serie
 `hx711`|Funcionamiento del accionar del conversor AD, sumado a algunas funciones
+`tick`|Permite utilizar el contador de Tick para temporizaciones
 
 ## Datos del grupo :busts_in_silhouette:
 Campo|Detalle
@@ -28,3 +29,10 @@ v0.2    - Agregamos el ENCODER
 - :black_large_square: Pines asignados a la plaqueta definitiva
 - :blue_square: Temporalmente dejamos comentado el código de de la celda de carga
 - :red_square: Sacamos los pines de las teclas y leds que no corresponden a la plaqueta final ya que no existen
+
+v0.3    - Tecla del ENCODER
+- :black_large_square: Agrega la libreria tick.h junto a tick.c para utilizar el Timer0 y contadores con el mismo
+- :black_large_square: Agrega otra MEF para el ENCODER, correspondiente a la tecla del mismo
+
+v0.3.1  - Optimización
+- :red_square: Elimina algunos pines innecesarios que habían quedado

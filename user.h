@@ -40,8 +40,8 @@
 #define TRIS_ENCB	TRISAbits.TRISA3
 #define PIN_ENCB	PORTAbits.RA3
 
-#define TRIS_ENC_SW	TRISBbits.TRISB5
-#define PIN_ENC_SW	PORTBbits.RB5
+#define TRIS_TEC_ENC TRISBbits.TRISB5
+#define PIN_TEC_ENC	 PORTBbits.RB5
 /*==================[tipos de datos declarados por el usuario]===============*/
 
 /*==================[declaraciones de datos externos]========================*/

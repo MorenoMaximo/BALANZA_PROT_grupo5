@@ -19,6 +19,7 @@
 #include "hx711.h"
 #include "uart.h"       /* Funciones/Parametros User, como InitApp */
 #include "system.h"       /* Funciones/Parametros User, como InitApp */
+#include "tick.h"       /* Funciones/Parametros Tick */
 
 /*==================[definiciones y macros]==================================*/
 
@@ -57,16 +58,17 @@ void appInit(void) {
     //Configuracion del Encoder
     TRIS_ENCA   = 1;
     TRIS_ENCB   = 1;
-    TRIS_ENC_SW = 1;
+    TRIS_TEC_ENC = 1;
     
     //Configuraciones externas
     uartInit();         //Configuracion de la UART
+    tickInit();         //Configuracion de TICK
     __delay_ms(100);    //Espera que se estabilice la fuente
     
     /* TODO: Habilita Interrupciones si es necesario*/
-    //...IE = 1;     //Habilita la interrupcion ...
+    TMR0IE = 1;     //Habilita interrupcion para tick
     //PEIE = 1;       
-    //GIE = 1;        //General Interrupt Enable
+    GIE = 1;        //General Interrupt Enable
 
 }
 
