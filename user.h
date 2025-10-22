@@ -33,19 +33,7 @@
 #define TRIS_BUZZER     TRISCbits.TRISC0
 #define PIN_BUZZER      PORTCbits.RC0
 
-//Encoder
-#define TRIS_ENCA   TRISAbits.TRISA2
-#define PIN_ENCA	PORTAbits.RA2
-
-#define TRIS_ENCB	TRISAbits.TRISA3
-#define PIN_ENCB	PORTAbits.RA3
-
-#define TRIS_TEC_ENC TRISBbits.TRISB5
-#define PIN_TEC_ENC	 PORTBbits.RB5
-/*==================[tipos de datos declarados por el usuario]===============*/
-
-/*==================[declaraciones de datos externos]========================*/
-//extern char datoUser; //Ejemplo
+//Encoder en encoder.h
 
 /*==================[declaraciones de funciones externas]====================*/
 /* TODO: Los prototipos de User level (ej. InitApp) van aquí */

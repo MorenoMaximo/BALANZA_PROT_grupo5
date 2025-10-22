@@ -23,32 +23,17 @@
 #include "system.h"
 #include "hx711.h"
 #include "tick.h"
-
-/*==================[definiciones y macros]==================================*/
-// Nuevo tipo de datos enumerado llamado estadoMEF_t
-typedef enum{A1B1, A1B0, A0B0, A0B1} estadoENC_t;
-typedef enum{SUELTO, BAJANDO, PRESIONADO, SUBIENDO, MANTENIDO} estadoTEC_ENC_t;
+#include "encoder.h"
 
 /*==================[definiciones de datos internos]=========================*/
-estadoENC_t  estadoActualENCODER;       // Variable de estado (global)
-estadoTEC_ENC_t estadoActualTEC_ENC;    // Variable de estado (global)
-tick_t tTEC_ENC;
-tick_t tMEDICION;
 char empezarMedicion = 0;
 /*==================[declaraciones de funciones internas]====================*/
-//MEF de rotacion del ENCODER
-void InicializarENCODER(void);
-void ActualizarENCODER(void);
-
-//MEF de Tecla del ENCODER
-void InicializarTEC_ENCODER(void);
-void ActualizarTEC_ENCODER(void);
 
 //Codigo principal
 void main(void) {
     appInit();                  //Inicializo las entradas y salidas
     
-    //Inicializamos las Máquinas de Estados
+    //Inicializamos el MEF encoder
     InicializarENCODER();
     InicializarTEC_ENCODER();
 //    uint8_t numMuestra = 0;
