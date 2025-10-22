@@ -18,7 +18,7 @@ Curso|6ºElectrónica
 Año|2025
 
 # Notas de Versionado :clipboard:
-***Recuerda*** **adición o cambio**(en negro :black_large_square:), **cambio temporal**(en azul :blue_square:) y **eliminación**(en rojo :red_square:)
+***Recuerda*** **adición o cambio**(en verde :green_square:), **cambio temporal**(en azul :blue_square:) y **eliminación**(en rojo :red_square:)
 
 v0.1 	- Prototipo de prueba de Balanza
 - :black_large_square: Prueba las funcionalidades de la celda de carga con el HX711
