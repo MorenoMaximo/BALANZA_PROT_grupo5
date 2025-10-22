@@ -44,4 +44,4 @@ v0.3.2  - Medición del tiempo de muestreo
 - :blue_square: Implementamos un segmento de código que mide el tiempo que demora en hacerse una muestra de la celda de carga a través del HX711
 
 v0.4    - Librería del ENCODER
-- :blue_square: Se agregaron las librerias correspondientes al ENCODER tanto en rotación como para el botón
+- :blue_square: Se agregaron las librerias con las MEF del ENCODER para organizar de manera modular

@@ -30,8 +30,9 @@
 
 /*==================[declaraciones de funciones externas]====================*/
 //MEF de rotacion del ENCODER
-void InicializarENCODER(void);
 void ActualizarENCODER(void);
 
+//MEF de pulsación del ENCODE
+void ActualizarTEC_ENCODER(void);
 /*==================[fin del archivo]========================================*/
 #endif// ENCODER_H
