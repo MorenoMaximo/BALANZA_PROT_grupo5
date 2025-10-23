@@ -1,7 +1,7 @@
 # Balanza Medidora de Suero para PIC16F887
 Para trabajar con el compilador XC8(v2.40) con MPLABX IDE v6.20
 
-## Versión Actual: 0.3.2 :floppy_disk:
+## Versión Actual: 0.4 :floppy_disk:
 
 ## Módulos disponibles :computer: 
 Nombre|Descripcion
