@@ -28,11 +28,15 @@
 #define TRIS_TEC_ENC TRISBbits.TRISB5
 #define PIN_TEC_ENC	 PORTBbits.RB5
 
+/*==================[definiciones de datos externos]=========================*/
+// Declaración externa del flag del botón del encoder
+extern volatile bit botonEncoder;
+
 /*==================[declaraciones de funciones externas]====================*/
 //MEF de rotacion del ENCODER
 void ActualizarENCODER(void);
 
-//MEF de pulsación del ENCODE
+//MEF de pulsación del ENCODER
 void ActualizarTEC_ENCODER(void);
 /*==================[fin del archivo]========================================*/
 #endif// ENCODER_H

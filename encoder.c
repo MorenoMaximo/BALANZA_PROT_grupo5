@@ -37,8 +37,7 @@ typedef enum{
         MANTENIDO
 } estadoTEC_ENC_t;
 
-/*==================[definiciones de datos internos]=========================*/
-
+volatile bit botonEncoder = 0;
 
 /*==================[definiciones de funciones internas]=====================*/
 void ActualizarTEC_ENCODER(void) {
@@ -57,6 +56,7 @@ void ActualizarTEC_ENCODER(void) {
                 estadoActualTEC_ENC = SUELTO;
             }
             else if((tickRead() - tTEC_ENC) > 40) {
+                botonEncoder = 1;
                 estadoActualTEC_ENC = PRESIONADO;
             }
             break;
@@ -72,7 +72,6 @@ void ActualizarTEC_ENCODER(void) {
             }
             else if((tickRead() - tTEC_ENC) > 40) {
                 estadoActualTEC_ENC = SUELTO;
-                empezarMedicion = 1;
             }
             break;
         default:

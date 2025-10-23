@@ -20,6 +20,7 @@
 #include "uart.h"       /* Funciones/Parametros User, como InitApp */
 #include "system.h"       /* Funciones/Parametros User, como InitApp */
 #include "tick.h"       /* Funciones/Parametros Tick */
+#include "encoder.h"
 
 /*==================[definiciones y macros]==================================*/
 
