@@ -39,6 +39,7 @@
       <itemPath>GLCD_Text.c</itemPath>
       <itemPath>TFT_ILI9486_LL.c</itemPath>
       <itemPath>ejemplo.c</itemPath>
+      <itemPath>interrupts.c</itemPath>
     </logicalFolder>
   </logicalFolder>
   <sourceRootList>

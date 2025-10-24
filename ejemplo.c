@@ -114,7 +114,6 @@ void Demo_TodasFunctions(void) {
     ILI9486_DrawHLine(50, 50, 200, COLOR_RED);
     ILI9486_DrawVLine(150, 80, 100, COLOR_GREEN);
     Delay_ms(500);
-    return;
     
     // 2. Lineas diagonales
     ILI9486_DrawLine(50, 200, 250, 250, COLOR_BLUE);
@@ -122,12 +121,12 @@ void Demo_TodasFunctions(void) {
     Delay_ms(500);
     
     // 3. Circulos
-    ILI9486_DrawCircle(100, 150, 25, COLOR_CYAN);
-    ILI9486_DrawCircle(220, 150, 30, COLOR_MAGENTA);
-    Delay_ms(500);
+//    ILI9486_DrawCircle(100, 150, 25, COLOR_CYAN);
+//    ILI9486_DrawCircle(220, 150, 30, COLOR_MAGENTA);
+//    Delay_ms(500);
     
     // 4. Texto "grupo5"
-    ILI9486_DrawText(100, 300, "grupo5", COLOR_WHITE, COLOR_BLACK);
+    ILI9486_DrawText(100, 300, "grupo5", COLOR_RED, COLOR_GREEN);
     Delay_ms(1000);
     
     // 5. Texto en diferente posicion y color

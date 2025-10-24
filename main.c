@@ -33,24 +33,16 @@ extern void ejemplo(void);
 
 //Codigo principal
 void main(void) {
-    appInit();                  //Inicializo las entradas y salidas
-    ActualizarENCODER();        //Inicializamos los MEF encoder
-    ActualizarTEC_ENCODER();
-    
     uint8_t numMuestra = 1;
     unsigned long peso;
     uint16_t tiempoDeMuestra = 0;
     tick_t tMEDICION;
     
+    appInit();                  //Inicializo las entradas y salidas
     PIN_BUZZER = 0;
     PIN_LED = 0;
     
-    for(uint8_t cont = 0; cont < 100; cont++) {
-        PIN_LED = 1;
-        __delay_ms(500);
-        PIN_LED = 0;
-    }
-    //ejemplo();
+    ejemplo();
     while(1) {
         
         //Comprobamos constantemente los estados del ENCODER 
@@ -64,8 +56,9 @@ void main(void) {
 //            printf("Tiempo que tardo: %d\n", tiempoDeMuestra);
 //            printf("Peso: %lu\nMuestra: %d", peso, numMuestra);
             PIN_BUZZER = 1;
-            __delay_us(50);
+            __delay_us(500);
             PIN_BUZZER = 0;
+            __delay_us(500);
         }
         else {
             PIN_BUZZER = 0;
