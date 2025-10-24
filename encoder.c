@@ -72,6 +72,7 @@ void ActualizarTEC_ENCODER(void) {
             }
             else if((tickRead() - tTEC_ENC) > 40) {
                 estadoActualTEC_ENC = SUELTO;
+                botonEncoder = 0;
             }
             break;
         default:
@@ -100,6 +101,7 @@ void ActualizarENCODER(void) {
             }
             else if(PIN_ENCB == 1) {        // Chequear condiciones de transición de estado
                 estadoActualENCODER = A1B1; // Cambiar a otro estado
+                PIN_LED = !PIN_LED;
             }
             break;
         case A0B0:
@@ -113,6 +115,7 @@ void ActualizarENCODER(void) {
         case A0B1:
             if(PIN_ENCA == 1) {             // Chequear condiciones de transición de estado
                 estadoActualENCODER = A1B1; // Cambiar a otro estado
+                PIN_LED = !PIN_LED;
             }
             else if(PIN_ENCB == 0) {        // Chequear condiciones de transición de estado
                 estadoActualENCODER = A0B0; // Cambiar a otro estado

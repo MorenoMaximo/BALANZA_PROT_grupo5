@@ -25,8 +25,9 @@
 #include "tick.h"
 #include "encoder.h"
 
-/*==================[definiciones de datos internos]=========================*/
 
+/*==================[definiciones de datos internos]=========================*/
+extern void ejemplo(void);
 
 /*==================[declaraciones de funciones internas]====================*/
 
@@ -41,6 +42,15 @@ void main(void) {
     uint16_t tiempoDeMuestra = 0;
     tick_t tMEDICION;
     
+    PIN_BUZZER = 0;
+    PIN_LED = 0;
+    
+    for(uint8_t cont = 0; cont < 100; cont++) {
+        PIN_LED = 1;
+        __delay_ms(500);
+        PIN_LED = 0;
+    }
+    //ejemplo();
     while(1) {
         
         //Comprobamos constantemente los estados del ENCODER 
@@ -48,13 +58,19 @@ void main(void) {
         ActualizarTEC_ENCODER();
         
         if(botonEncoder) {
-            tMEDICION = tickRead();
-            peso = HX711Read();
-            tiempoDeMuestra = (tickRead() - tMEDICION);
-            printf("Tiempo que tardo: %d\n", tiempoDeMuestra);
-            printf("Peso: %lu\nMuestra: %d", peso, numMuestra);
-            botonEncoder = 0;
+//            tMEDICION = tickRead();
+//            peso = HX711Read();
+//            tiempoDeMuestra = (tickRead() - tMEDICION);
+//            printf("Tiempo que tardo: %d\n", tiempoDeMuestra);
+//            printf("Peso: %lu\nMuestra: %d", peso, numMuestra);
+            PIN_BUZZER = 1;
+            __delay_us(50);
+            PIN_BUZZER = 0;
         }
+        else {
+            PIN_BUZZER = 0;
+        }
+        
     }
 }   //Fin del main()
 
