@@ -55,3 +55,5 @@ v0.5    - Inclusión de la pantalla (ILI9486)
 - :blue_square: Se agregó la función *ejemplo()* para probar todas las funcionalidades de la **PANTALLA**, en versiones futuras se haran correcciones basadas al funcionamiento de esta
 
 v0.5.1  - Correcciones
+- :green_screen: Se arreglaron los "tags" de los colores
+- :green_screen: Se corrigió la rotación de la **PANTALLA** y su resolución

@@ -56,9 +56,6 @@ void main(void) {
 //            printf("Tiempo que tardo: %d\n", tiempoDeMuestra);
 //            printf("Peso: %lu\nMuestra: %d", peso, numMuestra);
         }
-        else {
-            PIN_BUZZER = 0;
-        }
         
     }
 }   //Fin del main()

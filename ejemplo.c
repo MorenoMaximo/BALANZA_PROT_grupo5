@@ -1,3 +1,4 @@
+#include "system.h"
 #include "TFT_ILI9486_LL.h"
 #include "GLCD_Draw.h"
 #include "GLCD_Text.h"
@@ -148,5 +149,22 @@ void ejemplo(void){
     ILI9486_Init();
     
     // Ejecutar demostracion
-    Demo_TodasFunctions();
+    //Demo_TodasFunctions();
+    
+    ILI9486_ClearScreen(COLOR_BLACK);
+    __delay_ms(1000);
+    ILI9486_ClearScreen(COLOR_WHITE);
+    __delay_ms(1000);
+    ILI9486_ClearScreen(COLOR_CYAN);
+    __delay_ms(1000);
+    ILI9486_ClearScreen(COLOR_YELLOW);
+    __delay_ms(1000);
+    ILI9486_ClearScreen(COLOR_MAGENTA);
+    __delay_ms(1000);
+    ILI9486_ClearScreen(COLOR_RED);
+    __delay_ms(1000);
+    ILI9486_ClearScreen(COLOR_BLUE);
+    __delay_ms(1000);
+    ILI9486_ClearScreen(COLOR_GREEN);
+    __delay_ms(1000);
 }
