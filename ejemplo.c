@@ -1,4 +1,3 @@
-
 #include "TFT_ILI9486_LL.h"
 #include "GLCD_Draw.h"
 #include "GLCD_Text.h"

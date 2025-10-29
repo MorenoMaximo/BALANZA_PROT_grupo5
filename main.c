@@ -55,10 +55,6 @@ void main(void) {
 //            tiempoDeMuestra = (tickRead() - tMEDICION);
 //            printf("Tiempo que tardo: %d\n", tiempoDeMuestra);
 //            printf("Peso: %lu\nMuestra: %d", peso, numMuestra);
-            PIN_BUZZER = 1;
-            __delay_us(500);
-            PIN_BUZZER = 0;
-            __delay_us(500);
         }
         else {
             PIN_BUZZER = 0;

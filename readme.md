@@ -1,7 +1,7 @@
 # Balanza Medidora de Suero para PIC16F887
 Para trabajar con el compilador XC8(v2.40) con MPLABX IDE v6.20
 
-## Versión Actual: 0.4 :floppy_disk:
+## Versión Actual: 0.5.1 :floppy_disk:
 
 ## Módulos disponibles :computer: 
 Nombre|Descripcion
@@ -10,6 +10,10 @@ Nombre|Descripcion
 `hx711`|Funcionamiento del accionar del conversor AD, sumado a algunas funciones
 `tick`|Permite utilizar el contador de Tick para temporizaciones
 `encoder`|Utilidades del Encoder, su rotación y botón
+`TFT_ILI9486`|Libreria de control de la pantalla
+`GLCD_Draw`|Funciones de dibujo para líneas, círculos y cuadrados
+`GLCD_Text`|Funciones de escritura de letras y números
+
 
 ## Datos del grupo :busts_in_silhouette:
 Campo|Detalle
@@ -45,3 +49,9 @@ v0.3.2  - Medición del tiempo de muestreo
 
 v0.4    - Librería del ENCODER
 - :green_square: Se agregaron las librerias `encoder.h` y `encoder.c` con las _MEF_ del **ENCODER** para organizar de manera modular y ordenar el `main.c`
+
+v0.5    - Inclusión de la pantalla (ILI9486)
+- :green_square: Se agregaron las librerías `TFT_ILI9486`, `GLCD_Draw` y `GLCD_Text` para la configuración principal de la **PANTALLA**
+- :blue_square: Se agregó la función *ejemplo()* para probar todas las funcionalidades de la **PANTALLA**, en versiones futuras se haran correcciones basadas al funcionamiento de esta
+
+v0.5.1  - Correcciones
