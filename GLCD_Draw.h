@@ -16,6 +16,7 @@ typedef struct {
 //void ILI9486_SetWindow(uint16_t x1, uint16_t y1, uint16_t x2, uint16_t y2) ;
 //void ILI9486_WritePixel(uint16_t color) ;
 //void ILI9486_DrawPixel(uint16_t x, uint16_t y, uint16_t color) ;
+void DrawOctantPixel(int16_t x_coord, int16_t y_coord, uint16_t color);
 void ILI9486_DrawHLine(uint16_t x, uint16_t y, uint16_t length, uint16_t color) ;
 void ILI9486_DrawVLine(uint16_t x, uint16_t y, uint16_t length, uint16_t color) ;
 void ILI9486_DrawLine(uint16_t x1, uint16_t y1, uint16_t x2, uint16_t y2, uint16_t color) ;

@@ -18,11 +18,11 @@
 //#define DOT_X_ALTO      320
 //#define DOT_X_ANCHO  240
 
-#define LCD_W 320//240//315//320
-#define LCD_H 480//473//480
+#define LCD_W 320
+#define LCD_H 480
 /* estan para cuando se usa la orientacion que retorne el anchoy el alto segun como se este graficando*/
-#define GET_LCD_HEIGHT()    ( LCD_H)
-#define GET_LCD_WIDTH()   ( LCD_W )
+#define GET_LCD_ALTO()    ( LCD_H)
+#define GET_LCD_ANCHO()   ( LCD_W )
 
 // IO connection
 

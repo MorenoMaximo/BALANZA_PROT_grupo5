@@ -12,7 +12,19 @@
 
 #include"Controlador.h"
 
+#define TRUE 1  
+#define FALSE 0
 
+//#define LCDENABLE(a)     (a==TRUE?LcdEnable_Flag=1:LcdEnable_Flag=0)
+#define LCDENABLE(a)     ((a==TRUE)?LCD_CS = 0:LCD_CS = 1)
+/*
+#define LCD_CS_LOW()     (LcdEnable_Flag==0 ?LCD_CS = 0:LCD_CS = LCD_CS) //LCD_CS = 0
+#define LCD_CS_HIGH()    (LcdEnable_Flag==0 ?LCD_CS = 1:LCD_CS = LCD_CS) //LCD_CS = 1
+*/
+#define LCD_CS_LOW()      LCD_CS = 0
+#define LCD_CS_HIGH()     LCD_CS = 1
+
+extern uint8_t LcdEnable_Flag;
 /*
  * Hardware Setup:
  *  Operating voltage of 3.3V
@@ -77,6 +89,7 @@ typedef enum
 
 
 
+
 // Definiciones de pines según tu configuración
 #define LCD_RD       PORTBbits.RB0    // PuertoB-0 pin 6
 #define LCD_WR       PORTBbits.RB1    // PuertoB-1 pin 7
@@ -96,9 +109,12 @@ typedef enum
 
 #define DATA_BUS     PORTD
 
+
+
 // Macros para control de pines
-#define LCD_CS_LOW()     LCD_CS = 0
-#define LCD_CS_HIGH()    LCD_CS = 1
+//#define LCD_CS_LOW()     LCD_CS = 0
+//#define LCD_CS_HIGH()    LCD_CS = 1
+
 #define LCD_RS_LOW()     LCD_RS = 0
 #define LCD_RS_HIGH()    LCD_RS = 1
 #define LCD_WR_LOW()     LCD_WR = 0
@@ -109,6 +125,10 @@ typedef enum
 #define LCD_RESET_HIGH() LCD_RESET = 1
 
 //TODO: IOMplementar ddefine
+
+
+
+
 // Colores en formato RGB565
 #define COLOR_BLACK     0xFFFF
 #define COLOR_WHITE     0x0000
@@ -130,24 +150,11 @@ void ILI9486_WriteData(uint8_t data) ;
 
 void ILI9486_WritePixel(uint16_t color) ;
 void ILI9486_DrawPixel(uint16_t x, uint16_t y, uint16_t color) ;
+void ILI9486_DrawPixelC(uint16_t x, uint16_t y, uint16_t color);
 
 void ILI9486_SetWindow(uint16_t x1, uint16_t y1, uint16_t x2, uint16_t y2) ;
 void ILI9486_SetRotation(uint8_t rotation) ;
 void ILI9486_ClearScreen(uint16_t color) ;
-
-
-//-----
-
-
-void Address_set(Ctr_GDisplay* HndTft, unsigned int x1,unsigned int y1,unsigned int x2,unsigned int y2);
-void LCD_WR_DATA8(Ctr_GDisplay* HndTft, char VH,char VL); //Send -8 bit parameter data
-void LCD_WR_DATA(Ctr_GDisplay* HndTft, int da);
-void LCD_WR_REG(Ctr_GDisplay* HndTft, int da);
-
-//void LCD_DrawPoint(uint16_t x,uint16_t y);//Dotted
-void LCD_DrawPoint(Ctr_GDisplay* HndTft, uint16_t x,uint16_t y, uint16_t PointColor);
-//void LCD_DrawLine(uint16_t x1, uint16_t y1, uint16_t x2, uint16_t y2);
-void LCD_DrawLine(Ctr_GDisplay* HndTft, uint16_t x1, uint16_t y1, uint16_t x2, uint16_t y2, uint16_t Color);
 
 
 #endif /* TFT_ILI9325_320X240_LL_H_ */

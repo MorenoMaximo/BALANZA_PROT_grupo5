@@ -2,6 +2,7 @@
 #include "TFT_ILI9486_LL.h"
 #include "GLCD_Draw.h"
 #include "GLCD_Text.h"
+#include <xc.h>
 
 
 /*
@@ -87,7 +88,7 @@ void DrawFullScreenImage(uint16_t *image) {
     ILI9486_WriteImage(0, 0, 319, 479, image, 320*480);
 }
 
-// Escribir bloque rectangular m√°s eficiente
+// Escribir bloque rectangular m·s eficiente
 void ILI9486_WriteBlock(uint16_t x1, uint16_t y1, uint16_t x2, uint16_t y2, 
                         uint16_t color) {
     uint32_t pixel_count = (x2 - x1 + 1) * (y2 - y1 + 1);
@@ -107,37 +108,37 @@ void ILI9486_WriteBlock(uint16_t x1, uint16_t y1, uint16_t x2, uint16_t y2,
 // Demostracion de todas las funciones
 void Demo_TodasFunctions(void) {
     // Limpiar pantalla
-    ILI9486_ClearScreen(COLOR_BLACK);
-    Delay_ms(500);
+    ILI9486_ClearScreen(COLOR_WHITE);
+    __delay_ms(500);
     
     // 1. Lineas horizontales y verticales
-    ILI9486_DrawHLine(50, 50, 200, COLOR_RED);
-    ILI9486_DrawVLine(150, 80, 100, COLOR_GREEN);
-    Delay_ms(500);
-    
-    // 2. Lineas diagonales
-    ILI9486_DrawLine(50, 200, 250, 250, COLOR_BLUE);
-    ILI9486_DrawLine(250, 200, 50, 250, COLOR_YELLOW);
-    Delay_ms(500);
-    
-    // 3. Circulos
+//    ILI9486_DrawHLine(50, 50, 200, COLOR_RED);
+//    ILI9486_DrawVLine(150, 80, 100, COLOR_GREEN);
+//    __delay_ms(500);
+//    
+//    // 2. Lineas diagonales
+//    ILI9486_DrawLine(50, 200, 250, 250, COLOR_BLUE);
+//    ILI9486_DrawLine(250, 200, 50, 250, COLOR_YELLOW);
+//    __delay_ms(500);
+//    
+//    // 3. Circulos
 //    ILI9486_DrawCircle(100, 150, 25, COLOR_CYAN);
 //    ILI9486_DrawCircle(220, 150, 30, COLOR_MAGENTA);
-//    Delay_ms(500);
+//    __delay_ms(500);
     
-    // 4. Texto "grupo5"
-    ILI9486_DrawText(100, 300, "grupo5", COLOR_RED, COLOR_GREEN);
-    Delay_ms(1000);
+    // 4. Caracter "A"
+    ILI9486_DrawChar(100, 300, 'A', COLOR_YELLOW, COLOR_RED, 4);
+    __delay_ms(1000);
     
     // 5. Texto en diferente posicion y color
-    ILI9486_DrawText(80, 320, "grupo5", COLOR_YELLOW, COLOR_RED);
-    Delay_ms(1000);
+    ILI9486_DrawText(80, 80, "grupo5", COLOR_BLACK, COLOR_WHITE, 2);
+    __delay_ms(1000);
     
     // 6. Marco alrededor
-    ILI9486_DrawHLine(10, 10, 300, COLOR_WHITE);
-    ILI9486_DrawHLine(10, 470, 300, COLOR_WHITE);
-    ILI9486_DrawVLine(10, 10, 460, COLOR_WHITE);
-    ILI9486_DrawVLine(310, 10, 460, COLOR_WHITE);
+//    ILI9486_DrawHLine(10, 10, 300, COLOR_WHITE);
+//    ILI9486_DrawHLine(10, 470, 300, COLOR_WHITE);
+//    ILI9486_DrawVLine(10, 10, 460, COLOR_WHITE);
+//    ILI9486_DrawVLine(310, 10, 460, COLOR_WHITE);
 }
 
 void ejemplo(void){
@@ -149,22 +150,5 @@ void ejemplo(void){
     ILI9486_Init();
     
     // Ejecutar demostracion
-    //Demo_TodasFunctions();
-    
-    ILI9486_ClearScreen(COLOR_BLACK);
-    __delay_ms(1000);
-    ILI9486_ClearScreen(COLOR_WHITE);
-    __delay_ms(1000);
-    ILI9486_ClearScreen(COLOR_CYAN);
-    __delay_ms(1000);
-    ILI9486_ClearScreen(COLOR_YELLOW);
-    __delay_ms(1000);
-    ILI9486_ClearScreen(COLOR_MAGENTA);
-    __delay_ms(1000);
-    ILI9486_ClearScreen(COLOR_RED);
-    __delay_ms(1000);
-    ILI9486_ClearScreen(COLOR_BLUE);
-    __delay_ms(1000);
-    ILI9486_ClearScreen(COLOR_GREEN);
-    __delay_ms(1000);
+    Demo_TodasFunctions();
 }
