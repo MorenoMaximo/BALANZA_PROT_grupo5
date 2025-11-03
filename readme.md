@@ -55,5 +55,13 @@ v0.5    - Inclusión de la pantalla (ILI9486)
 - :blue_square: Se agregó la función *ejemplo()* para probar todas las funcionalidades de la **PANTALLA**, en versiones futuras se haran correcciones basadas al funcionamiento de esta
 
 v0.5.1  - Correcciones
-- :green_screen: Se arreglaron los "tags" de los colores
-- :green_screen: Se corrigió la rotación de la **PANTALLA** y su resolución
+- :green_square: Se arreglaron los "tags" de los colores
+- :green_square: Se corrigió la rotación de la **PANTALLA** y su resolución
+
+v0.6    - Escritura de texto
+- :green_square: Se corrigieron las funciones `ILI9486_DrawText`, `ILI9486_DrawChar` y `ILI9486_DrawNumber` con el fin de escribir en la **PANTALLA** correctamente
+- :blue_square: Se realizaron exhaustivas pruebas con relación a la escritura en el hardware
+
+v0.7    - Prototipo de diseño final
+- :green_square: Corrección de las funciones de escritura para escribir exclusivamente en rotación Landscape (en un futuro se podrá escribir en todas las horientaciones)
+- :blue_square: Implementación de la función `DrawTemplate()` para escribir el diseño prematuro del proyecto

@@ -24,11 +24,15 @@
 #include "hx711.h"
 #include "tick.h"
 #include "encoder.h"
-
+#include "TFT_ILI9486_LL.h"
+#include "GLCD_Draw.h"
+#include "GLCD_Text.h"
 
 /*==================[definiciones de datos internos]=========================*/
 extern void ejemplo(void);
+unsigned char numAdvertencia = 0;
 
+/*==================[definiciones de datos externos]=========================*/
 /*==================[declaraciones de funciones internas]====================*/
 
 //Codigo principal
@@ -42,7 +46,7 @@ void main(void) {
     PIN_BUZZER = 0;
     PIN_LED = 0;
     
-    ejemplo();
+    DrawTemplate(BLACK, WHITE);
     while(1) {
         
         //Comprobamos constantemente los estados del ENCODER 
@@ -50,6 +54,7 @@ void main(void) {
         ActualizarTEC_ENCODER();
         
         if(botonEncoder) {
+            PIN_LED = !PIN_LED;
 //            tMEDICION = tickRead();
 //            peso = HX711Read();
 //            tiempoDeMuestra = (tickRead() - tMEDICION);

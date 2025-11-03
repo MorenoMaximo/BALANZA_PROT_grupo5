@@ -17,17 +17,17 @@ typedef struct {
 //void ILI9486_WritePixel(uint16_t color) ;
 //void ILI9486_DrawPixel(uint16_t x, uint16_t y, uint16_t color) ;
 void DrawOctantPixel(int16_t x_coord, int16_t y_coord, uint16_t color);
+
+//Lineas
 void ILI9486_DrawHLine(uint16_t x, uint16_t y, uint16_t length, uint16_t color) ;
 void ILI9486_DrawVLine(uint16_t x, uint16_t y, uint16_t length, uint16_t color) ;
 void ILI9486_DrawLine(uint16_t x1, uint16_t y1, uint16_t x2, uint16_t y2, uint16_t color) ;
+
+//Círculos
 void ILI9486_DrawCircle(uint16_t x0, uint16_t y0, uint16_t radius, uint16_t color) ;
 void ILI9486_DrawFilledCircle(uint16_t x0, uint16_t y0, uint16_t radius, uint16_t color) ;
 
-
-
-
-
-
-
+//Plantilla
+void DrawTemplate(uint16_t color, uint16_t bg_color);
 
 #endif /* GLCD_DRAW_H_ */

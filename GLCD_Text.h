@@ -126,7 +126,7 @@ typedef struct {
 
 
 void ILI9486_DrawChar(uint16_t x, uint16_t y, char c, uint16_t color, uint16_t bg_color, uint8_t scale) ;
-
+void ILI9486_DrawNumber(uint16_t x, uint16_t y, int16_t number, uint16_t color, uint16_t bg_color, uint8_t scale);
 void ILI9486_DrawText(uint16_t x, uint16_t y, const char *text, uint16_t color, uint16_t bg_color, uint8_t scale) ;
 
 

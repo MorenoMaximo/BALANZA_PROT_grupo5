@@ -108,7 +108,7 @@ void ILI9486_WriteBlock(uint16_t x1, uint16_t y1, uint16_t x2, uint16_t y2,
 // Demostracion de todas las funciones
 void Demo_TodasFunctions(void) {
     // Limpiar pantalla
-    ILI9486_ClearScreen(COLOR_WHITE);
+    ILI9486_ClearScreen(WHITE);
     __delay_ms(500);
     
     // 1. Lineas horizontales y verticales
@@ -127,11 +127,11 @@ void Demo_TodasFunctions(void) {
 //    __delay_ms(500);
     
     // 4. Caracter "A"
-    ILI9486_DrawChar(100, 300, 'A', COLOR_YELLOW, COLOR_RED, 4);
+    ILI9486_DrawChar(100, 200, 'A', MAGENTA, CYAN, 4);
     __delay_ms(1000);
     
     // 5. Texto en diferente posicion y color
-    ILI9486_DrawText(80, 80, "grupo5", COLOR_BLACK, COLOR_WHITE, 2);
+    ILI9486_DrawText(80, 80, "grupo5", BLACK, WHITE, 2);
     __delay_ms(1000);
     
     // 6. Marco alrededor

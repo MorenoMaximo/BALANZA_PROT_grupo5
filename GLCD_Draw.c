@@ -1,5 +1,6 @@
 #include "Controlador.h"
 #include "GLCD_Draw.h"
+#include "GLCD_Text.h"
 
 //deberia estar en LL
 
@@ -14,8 +15,9 @@ uint16_t abs(int16_t a){
 
 // FunciÃ³n para dibujar lÃ­nea horizontal (optimizada)
 void ILI9486_DrawHLine(uint16_t x, uint16_t y, uint16_t length, uint16_t color) {
-    if(y >= 480) return;
-    if(x + length > 320) length = 320 - x;
+    
+    if(y >= 320) return;
+    if(x + length > 480) length = 480 - x;
     LCDENABLE(TRUE);
     ILI9486_SetWindow(x, y, x + length - 1, y);
     
@@ -165,4 +167,30 @@ void ILI9486_DrawFilledCircle(uint16_t x0, uint16_t y0, uint16_t radius, uint16_
         }
     }
     LCDENABLE(FALSE);
+}
+
+void DrawTemplate(uint16_t color, uint16_t bg_color) {
+    //Fondo unicolor
+    ILI9486_ClearScreen(bg_color);
+    
+    //División vertical
+    ILI9486_DrawVLine(190, 0, 320, color);
+    ILI9486_DrawVLine(191, 0, 320, color);
+    ILI9486_DrawVLine(189, 0, 320, color);
+    
+    //División horizontal
+    ILI9486_DrawHLine(0, 105, 191, color);
+    ILI9486_DrawHLine(0, 106, 191, color);
+    
+    ILI9486_DrawHLine(0, 212, 191, color);
+    ILI9486_DrawHLine(0, 213, 191, color);
+    
+    ILI9486_DrawHLine(191, 159, 1000, color);
+    ILI9486_DrawHLine(191, 160, 289, color);
+    ILI9486_DrawHLine(191, 161, 289, color);
+    
+    //Texto
+    ILI9486_DrawCircle(300, 300, 30, color);
+    ILI9486_DrawText(0, 0, "PESO", color, bg_color, 4);
+    
 }

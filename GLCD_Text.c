@@ -149,9 +149,11 @@ void ILI9486_DrawChar(uint16_t x, uint16_t y, char c, uint16_t color, uint16_t b
     uint8_t char_index = 0;
     uint8_t font_data;
     
-    if(scale > 100) {
+    // Límite de la escala
+    if(scale >= 6) {
         scale = 5;
     }
+    
    // Validar coordenadas
     if(x >= GET_LCD_WIDTH() || y >= GET_LCD_HEIGHT() ) return;
     // Mapear caracter al índice de la tabla 
@@ -163,7 +165,7 @@ void ILI9486_DrawChar(uint16_t x, uint16_t y, char c, uint16_t color, uint16_t b
     }
     //TODO:  VERIFICAR FILAS Y COLUMNAS!!!!!
     
-    ILI9486_SetRotation(1);
+    ILI9486_SetRotation(2);
     LCDENABLE(TRUE);
     
     // seteo una sola vez la ventana apra todo el caracter
@@ -192,6 +194,12 @@ void ILI9486_DrawChar(uint16_t x, uint16_t y, char c, uint16_t color, uint16_t b
 void ILI9486_DrawText(uint16_t x, uint16_t y, const char *text, uint16_t color, uint16_t bg_color, uint8_t scale) {
     uint16_t current_y = 0;
     uint16_t Pos=0;         // tambien corrige el problema del const
+    
+    // Límite de la escala
+    if(scale >= 6) {
+        scale = 5;
+    }
+    
     while((*(text+Pos)) != 0) {
         current_y = (y + Pos*(ASCII_FONT_HEIGHT+2));
         ILI9486_DrawChar(x, current_y, *(text+Pos), color, bg_color, scale);
@@ -203,18 +211,23 @@ void ILI9486_DrawText(uint16_t x, uint16_t y, const char *text, uint16_t color, 
 
 
 //EJEMPLO: IMPRIMIR UN NUMERO ENTERO (EQUIVALENTE A ITOA)
-void ILI9486_DrawNumber(uint16_t x, uint16_t y, int32_t number, uint16_t color, uint16_t bg_color, uint8_t scale) {
+void ILI9486_DrawNumber(uint16_t x, uint16_t y, int16_t number, uint16_t color, uint16_t bg_color, uint8_t scale) {
     char buffer[12];
     uint8_t i = 0;
     int32_t temp = number;
     
-    // Manejar nÃºmeros negativos
+    // Límite de la escala
+    if(scale >= 6) {
+        scale = 5;
+    }
+    
+    // Manejar números negativos
     if(number < 0) {
         buffer[i++] = '-';
         temp = -number;
     }
     
-    // Convertir nÃºmero a string
+    // Convertir número a string
     do {
         buffer[i++] = '0' + (temp % 10);
         temp /= 10;

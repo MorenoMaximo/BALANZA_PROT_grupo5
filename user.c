@@ -21,6 +21,7 @@
 #include "system.h"       /* Funciones/Parametros User, como InitApp */
 #include "tick.h"       /* Funciones/Parametros Tick */
 #include "encoder.h"
+#include "TFT_ILI9486_LL.h"
 
 /*==================[definiciones y macros]==================================*/
 
@@ -62,8 +63,10 @@ void appInit(void) {
     TRIS_TEC_ENC = 1;
     
     //Configuraciones externas
-    uartInit();         //Configuracion de la UART
-    tickInit();         //Configuracion de TICK
+    uartInit();         //Configuración de la UART
+    tickInit();         //Configuración de TICK
+    ILI9486_Init();     //Configuración del driver de la PANTALLA
+    
     __delay_ms(100);    //Espera que se estabilice la fuente
     
     /* TODO: Habilita Interrupciones si es necesario*/

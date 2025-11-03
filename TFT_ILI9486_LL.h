@@ -130,14 +130,14 @@ typedef enum
 
 
 // Colores en formato RGB565
-#define COLOR_BLACK     0xFFFF
-#define COLOR_WHITE     0x0000
-#define COLOR_CYAN       0xF800
-#define COLOR_MAGENTA     0x07E0
-#define COLOR_YELLOW      0x001F
-#define COLOR_BLUE    0xFFE0
-#define COLOR_RED      0x07FF
-#define COLOR_GREEN   0xF81F
+#define BLACK   0xFFFF
+#define WHITE   0x0000
+#define CYAN    0xF800
+#define MAGENTA 0x07E0
+#define YELLOW  0x001F
+#define BLUE    0xFFE0
+#define RED     0x07FF
+#define GREEN   0xF81F
 
 
 void Delay_ms(unsigned int ms) ;

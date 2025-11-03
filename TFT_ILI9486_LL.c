@@ -119,8 +119,7 @@ void ILI9486_Init(void) {
     ILI9486_WriteCommand(0x3A); // Interface Pixel Format
     ILI9486_WriteData(0x55);    // 16 bits por pixel (RGB 5-6-5)
     
-    ILI9486_WriteCommand(0x36); // Memory Access Control
-    ILI9486_SetRotation(0);     // Configuración de orientación
+    ILI9486_SetRotation(1);     // Configuración de orientación
     
     ILI9486_WriteCommand(0x29); // Display On
     __delay_ms(50);
@@ -131,8 +130,8 @@ void ILI9486_Init(void) {
 // Configurar Ã¡rea de dibujo
 
 void ILI9486_SetWindow(uint16_t x1, uint16_t y1, uint16_t x2, uint16_t y2) {
-    LCDENABLE(TRUE);
 
+    LCDENABLE(TRUE);
     // Set Column Address 0x2A 
     ILI9486_WriteCommand(0x2A);     
     ILI9486_WriteData(x1 >> 8);
@@ -200,7 +199,7 @@ void ILI9486_SetRotation(uint8_t rotation) {
 //
 //}
 void ILI9486_ClearScreen(uint16_t color) {
-    ILI9486_SetWindow(0, 0, 319, 479);
+    ILI9486_SetWindow(0, 0, 479, 319);
 
     LCD_RS_HIGH();   // modo datos
     LCD_CS_LOW();    // mantener chip seleccionado

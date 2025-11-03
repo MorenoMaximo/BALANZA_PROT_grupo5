@@ -18,6 +18,8 @@
 #include "user.h"       /* Funciones/Parametros User, como InitApp */
 #include "encoder.h"
 #include "tick.h"    /* Funciones/Parametros del Teclado */
+#include "TFT_ILI9486_LL.h"
+#include "GLCD_Text.h"
 
 /*==================[definiciones y macros]==================================*/
 // Nuevo tipo de datos enumerado llamado estadoENC_t
@@ -39,6 +41,8 @@ typedef enum{
 
 volatile bit botonEncoder = 0;
 
+/*==================[definiciones de datos externos]=========================*/
+extern unsigned char numAdvertencia = 0;
 /*==================[definiciones de funciones internas]=====================*/
 void ActualizarTEC_ENCODER(void) {
     static estadoTEC_ENC_t estadoActualTEC_ENC = SUELTO;    // Declara variable de estados static para que mantenga su valor y establece estado inicial
@@ -97,11 +101,12 @@ void ActualizarENCODER(void) {
             break;
         case A1B0:
             if(PIN_ENCA == 0) {             // Chequear condiciones de transición de estado
+                numAdvertencia--;
+                ILI9486_DrawChar(100, 100, (numAdvertencia + '0'), BLACK, WHITE, 5);
                 estadoActualENCODER = A0B0; // Cambiar a otro estado
             }
             else if(PIN_ENCB == 1) {        // Chequear condiciones de transición de estado
                 estadoActualENCODER = A1B1; // Cambiar a otro estado
-                PIN_LED = !PIN_LED;
             }
             break;
         case A0B0:
@@ -109,13 +114,14 @@ void ActualizarENCODER(void) {
                 estadoActualENCODER = A1B0; // Cambiar a otro estado
             }
             else if(PIN_ENCB == 1) {        // Chequear condiciones de transición de estado
+                numAdvertencia++;
+                ILI9486_DrawChar(100, 100, (numAdvertencia + '0'), BLACK, WHITE, 5);
                 estadoActualENCODER = A0B1; // Cambiar a otro estado
             }
             break;
         case A0B1:
             if(PIN_ENCA == 1) {             // Chequear condiciones de transición de estado
                 estadoActualENCODER = A1B1; // Cambiar a otro estado
-                PIN_LED = !PIN_LED;
             }
             else if(PIN_ENCB == 0) {        // Chequear condiciones de transición de estado
                 estadoActualENCODER = A0B0; // Cambiar a otro estado
