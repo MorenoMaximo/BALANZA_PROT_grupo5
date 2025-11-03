@@ -65,3 +65,7 @@ v0.6    - Escritura de texto
 v0.7    - Prototipo de diseño final
 - :green_square: Corrección de las funciones de escritura para escribir exclusivamente en rotación Landscape (en un futuro se podrá escribir en todas las horientaciones)
 - :blue_square: Implementación de la función `DrawTemplate()` para escribir el diseño prematuro del proyecto
+
+v0.7.1  - Diseño prototipo terminado
+- :green_square: Se terminó la función `DrawTemplate()`
+- :blue_square: Esta versión sirve de backup a fin de empezar a optimizar la escritura del driver **ILI9486 (PANTALLA)**

@@ -150,7 +150,7 @@ void ILI9486_DrawChar(uint16_t x, uint16_t y, char c, uint16_t color, uint16_t b
     uint8_t font_data;
     
     // Límite de la escala
-    if(scale >= 6) {
+    if(scale > 11) {
         scale = 5;
     }
     
@@ -192,19 +192,31 @@ void ILI9486_DrawChar(uint16_t x, uint16_t y, char c, uint16_t color, uint16_t b
     
 // Función para escribir texto 
 void ILI9486_DrawText(uint16_t x, uint16_t y, const char *text, uint16_t color, uint16_t bg_color, uint8_t scale) {
-    uint16_t current_y = 0;
+    uint16_t current_y = y;
     uint16_t Pos=0;         // tambien corrige el problema del const
     
     // Límite de la escala
-    if(scale >= 6) {
+    if(scale > 11) {
         scale = 5;
     }
     
-    while((*(text+Pos)) != 0) {
-        current_y = (y + Pos*(ASCII_FONT_HEIGHT+2));
+    // Recorre el texto carácter por carácter
+    while(*(text + Pos) != 0) {
+        // Dibuja el carácter actual
         ILI9486_DrawChar(x, current_y, *(text+Pos), color, bg_color, scale);
+        
+        // Avanza el cursor horizontalmente:
+        //  -> ancho del carácter escalado
+        //  -> +2 píxeles de margen entre caracteres
+        current_y += (ASCII_FONT_WIDTH * scale) + 2;
+        //Versión vieja de Gabi
+        //(Pos*(ASCII_FONT_HEIGHT+2));
+        
+        // Avanza al siguiente carácter
         Pos++;
-        if(current_y + ASCII_FONT_WIDTH > GET_LCD_WIDTH()) return;
+        
+        // Si se sale del ancho de pantalla, termina
+        if(x + (ASCII_FONT_WIDTH * scale) > GET_LCD_WIDTH()) return;
     }
 }
 
@@ -217,7 +229,7 @@ void ILI9486_DrawNumber(uint16_t x, uint16_t y, int16_t number, uint16_t color, 
     int32_t temp = number;
     
     // Límite de la escala
-    if(scale >= 6) {
+    if(scale > 11) {
         scale = 5;
     }
     
@@ -235,7 +247,7 @@ void ILI9486_DrawNumber(uint16_t x, uint16_t y, int16_t number, uint16_t color, 
     
     buffer[i] = '\0';
     
-    // Invertir la parte numÃ©rica
+    // Invertir la parte numérica
     uint8_t start = (number < 0) ? 1 : 0;
     uint8_t end = i - 1;
     while(start < end) {
