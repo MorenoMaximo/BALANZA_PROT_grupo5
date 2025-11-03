@@ -68,4 +68,4 @@ v0.7    - Prototipo de diseño final
 
 v0.7.1  - Diseño prototipo terminado
 - :green_square: Se terminó la función `DrawTemplate()`
-- :blue_square: Esta versión sirve de backup a fin de empezar a optimizar la escritura del driver **ILI9486 (PANTALLA)**
+- :warning: Esta versión sirve de backup a fin de empezar a optimizar la escritura del driver **ILI9486 (PANTALLA)**
