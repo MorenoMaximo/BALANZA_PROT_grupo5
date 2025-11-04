@@ -71,7 +71,7 @@ void main(void) {
             else {
                 ILI9486_DrawNumber(33, 325, nivBateria, RED, WHITE, 6);                
             }
-            //printf("Peso: %lu\nMuestra: %d\n\n", peso, numMuestra);
+            printf("Peso: %lu\nMuestra: %d\n\n", peso, numMuestra);
             tMEDICION = tickRead();
         }
         
