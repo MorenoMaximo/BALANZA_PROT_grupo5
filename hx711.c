@@ -17,6 +17,7 @@
 #include "user.h"
 #include "hx711.h"
 
+/*==================[definiciones de datos externos]=========================*/
 /*==================[definiciones de funciones externas]=====================*/
 /**
  * @brief	Toma muestras de la celda de carga
@@ -73,7 +74,6 @@ unsigned long HX711Promedio(void) {
         prom += HX711Read();
     }
     prom /= CANT_PROMEDIO;
-
     return (prom);
     
 //    if(prom > TARA) {

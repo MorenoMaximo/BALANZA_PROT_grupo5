@@ -24,6 +24,7 @@
 #include "hx711.h"
 #include "tick.h"
 #include "encoder.h"
+#include "adc.h"
 #include "TFT_ILI9486_LL.h"
 #include "GLCD_Draw.h"
 #include "GLCD_Text.h"
@@ -39,32 +40,48 @@ unsigned char numAdvertencia = 0;
 void main(void) {
     uint8_t numMuestra = 1;
     unsigned long peso;
-    uint16_t tiempoDeMuestra = 0;
-    tick_t tMEDICION;
-    
+    uint16_t tiempoDeMuestra = 0, nivBateria;
+    tick_t tMEDICION, tLED;
     appInit();                  //Inicializo las entradas y salidas
     PIN_BUZZER = 0;
     PIN_LED = 0;
     
+    adcRead_mV(VDD_CALC);
     DrawTemplate(BLACK, WHITE);
+    tLED = tickRead();          //Inicio el tiempo de heartbeat
     while(1) {
         
         //Comprobamos constantemente los estados del ENCODER 
         ActualizarENCODER();
         ActualizarTEC_ENCODER();
         
-        if(botonEncoder) {
-            PIN_LED = !PIN_LED;
-//            tMEDICION = tickRead();
-//            peso = HX711Read();
-//            tiempoDeMuestra = (tickRead() - tMEDICION);
-//            printf("Tiempo que tardo: %d\n", tiempoDeMuestra);
-//            printf("Peso: %lu\nMuestra: %d", peso, numMuestra);
+        //Comprobamos el nivel de batería
+        nivBateria = adcRead_mV(AIN4);
+        nivBateria = (nivBateria * 100) / 600;
+        if(tickRead() - tMEDICION > 250) {
+            peso = HX711Read();
+            ILI9486_DrawNumber(200, 50, 500, BLACK, WHITE, 8);
+            
+            if(nivBateria > 50) {
+                ILI9486_DrawNumber(33, 310, nivBateria, GREEN, WHITE, 6);
+            }
+            else if(nivBateria > 20) {
+                ILI9486_DrawNumber(33, 310, nivBateria, YELLOW, WHITE, 6);
+            }
+            else {
+                ILI9486_DrawNumber(33, 325, nivBateria, RED, WHITE, 6);                
+            }
+            //printf("Peso: %lu\nMuestra: %d\n\n", peso, numMuestra);
+            tMEDICION = tickRead();
         }
         
-    }
-}   //Fin del main()
-
+        //Led de Heartbeat
+        if (tickRead()-tLED > 100){
+            PIN_LED = !PIN_LED;
+            tLED = tickRead();
+        }
+    }   //Fin del main()
+}
 /*==================[definiciones de funciones internas]=====================*/
 
 

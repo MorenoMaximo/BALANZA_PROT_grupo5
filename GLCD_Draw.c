@@ -189,25 +189,35 @@ void DrawTemplate(uint16_t color, uint16_t bg_color) {
     ILI9486_DrawHLine(191, 160, 289, color);
     ILI9486_DrawHLine(191, 161, 289, color);
     
-/*==================================Texto=====================================*/
+/*=================================[Texto]====================================*/
     //Area de Peso
     ILI9486_DrawText(290, 10, "PESO", color, bg_color, 3);
-    ILI9486_DrawNumber(200, 50, 100, color, bg_color, 10);
+    ILI9486_DrawChar(200, 210, 'g', color, bg_color, 5);
     
     //Area de Peso Inicial
     ILI9486_DrawText(300, 300, "PESO INICIAL", color, bg_color, 2);
-    ILI9486_DrawNumber(231, 330, 200, color, bg_color, 7);
+    ILI9486_DrawChar(240, 410, 'g', color, bg_color, 5);
     
     //Area de Alerta
     ILI9486_DrawText(195, 300, "ALERTA", color, bg_color, 2);
-    ILI9486_DrawNumber(127, 330, 300, color, bg_color, 7);
+    ILI9486_DrawChar(135, 410, 'g', color, bg_color, 5);
     
     //Area de batería
     ILI9486_DrawText(87, 300, "BATERIA", color, bg_color, 2);
-    ILI9486_DrawNumber(23, 330, 40, color, bg_color, 7);
+    ILI9486_DrawChar(33, 420, '%', color, bg_color, 5);
     
-    //Area de Porcentaje
-    ILI9486_DrawText(130, 10, "PORCENTAJE", color, bg_color, 3);
-    ILI9486_DrawNumber(20, 50, 50, color, bg_color, 10);
+    //Area de Porcentaje de Suero
+    ILI9486_DrawText(130, 10, "SUERO %", color, bg_color, 3);
+    ILI9486_DrawChar(40, 210, '%', color, bg_color, 5);
     
+/*================================[Números]===================================*/
+    //Peso Inicial
+    ILI9486_DrawNumber(240, 310, 500, color, bg_color, 6);
+    
+    //Alerta
+    ILI9486_DrawNumber(135, 310, 100, color, bg_color, 6);
+    
+    //Porcentaje de Suero
+    ILI9486_DrawNumber(45, 20, 100, color, bg_color, 8);
+
 }

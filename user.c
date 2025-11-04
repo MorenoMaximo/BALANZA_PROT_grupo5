@@ -20,6 +20,7 @@
 #include "uart.h"       /* Funciones/Parametros User, como InitApp */
 #include "system.h"       /* Funciones/Parametros User, como InitApp */
 #include "tick.h"       /* Funciones/Parametros Tick */
+#include "adc.h"        /* Funciones/Parametros ADC */
 #include "encoder.h"
 #include "TFT_ILI9486_LL.h"
 
@@ -48,6 +49,7 @@ void appInit(void) {
     /* Configura funciones analÃ³gicas y direcciÃ³n de los Ports de I/O */
     ANSEL  = 0;
     ANSELH = 0;
+    ANS1 = 1;
     
     //Pines Genericos
     TRIS_LED    = 0;   
@@ -65,6 +67,7 @@ void appInit(void) {
     //Configuraciones externas
     uartInit();         //Configuración de la UART
     tickInit();         //Configuración de TICK
+    adcInit();
     ILI9486_Init();     //Configuración del driver de la PANTALLA
     
     __delay_ms(100);    //Espera que se estabilice la fuente

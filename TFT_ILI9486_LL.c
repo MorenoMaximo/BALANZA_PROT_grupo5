@@ -27,18 +27,6 @@
 // Función de delay simple
 uint8_t LcdEnable_Flag = 0;
 
-
-void Delay_ms(unsigned int ms) {
-    unsigned int i, j;
-    for(i = 0; i < ms; i++) {
-        for(j = 0; j < 1000; j++) {
-            NOP();
-        }
-    }
-}
-
-
-
 // Inicialización de puertos
 void Ports_Init(void) {
   //TODO:  Verificar con Maxi
@@ -64,7 +52,7 @@ void ILI9486_Reset(void) {
     LCD_RESET_LOW();
     __delay_ms(100);      // Esperar 100ms
     LCD_RESET_HIGH();
-    __delay_ms(120);      // Esperar 120ms después del reset
+    __delay_ms(120);      // Esperar 120ms despu�s del reset
 }
 
 // Escribir comando

@@ -29,5 +29,4 @@ void ILI9486_DrawFilledCircle(uint16_t x0, uint16_t y0, uint16_t radius, uint16_
 
 //Plantilla
 void DrawTemplate(uint16_t color, uint16_t bg_color);
-
 #endif /* GLCD_DRAW_H_ */

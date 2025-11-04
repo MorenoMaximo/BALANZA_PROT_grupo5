@@ -139,9 +139,6 @@ typedef enum
 #define RED     0x07FF
 #define GREEN   0xF81F
 
-
-void Delay_ms(unsigned int ms) ;
-
 void Ports_Init(void);
 void ILI9486_Init(void);
 void ILI9486_Reset(void);

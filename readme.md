@@ -1,7 +1,7 @@
 # Balanza Medidora de Suero para PIC16F887
 Para trabajar con el compilador XC8(v2.40) con MPLABX IDE v6.20
 
-## Versión Actual: 0.5.1 :floppy_disk:
+## Versión Actual: 0.8 :floppy_disk:
 
 ## Módulos disponibles :computer: 
 Nombre|Descripcion
@@ -13,7 +13,7 @@ Nombre|Descripcion
 `TFT_ILI9486`|Libreria de control de la pantalla
 `GLCD_Draw`|Funciones de dibujo para líneas, círculos y cuadrados
 `GLCD_Text`|Funciones de escritura de letras y números
-
+`adc`|Funciones de escritura de letras y números
 
 ## Datos del grupo :busts_in_silhouette:
 Campo|Detalle
@@ -69,3 +69,13 @@ v0.7    - Prototipo de diseño final
 v0.7.1  - Diseño prototipo terminado
 - :green_square: Se terminó la función `DrawTemplate()`
 - :warning: Esta versión sirve de backup a fin de empezar a optimizar la escritura del driver **ILI9486 (PANTALLA)**
+
+v0.8    - Control de batería
+- :green_square: Se agregó la librería `adc.h` para medir la batería y mostrarla en la **PANTALLA**
+- :green_square: Se implementó un código que:
+    - Inicia todos los drivers
+    - Actualiza la pantalla cada cierto tiempo
+    - Cuenta con un led de Heartbeat
+- :blue_square: Creamos un código provicional que muestra los parametros actuales y futuros que se mostrarán en la pantalla
+- :red_square: Se terminó la medición del tiempo de muestreo, determinando el mismo en alrededor de *100ms*
+- :red_square: Se eliminaron algunas lineas ya obsoletas
