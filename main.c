@@ -38,16 +38,19 @@ unsigned char numAdvertencia = 0;
 
 //Codigo principal
 void main(void) {
-    uint8_t numMuestra = 1;
+    uint8_t numMuestra = 1;     //Creamos las variables a utilizar
     unsigned long peso;
-    uint16_t tiempoDeMuestra = 0, nivBateria;
-    tick_t tMEDICION, tLED;
+    uint16_t nivBateria;
+    tick_t tLED;
+    
     appInit();                  //Inicializo las entradas y salidas
-    PIN_BUZZER = 0;
+    PIN_BUZZER = 0;             //Apagamos el Buzzer y el led
     PIN_LED = 0;
     
-    adcRead_mV(VDD_CALC);
-    DrawTemplate(BLACK, WHITE);
+    adcRead_mV(VDD_CALC);       //Referencia de tensión de alimentación
+    
+    DrawTemplate(BLACK, WHITE); //Dibujamos la cuadrícula del programa
+    
     tLED = tickRead();          //Inicio el tiempo de heartbeat
     while(1) {
         
@@ -58,6 +61,8 @@ void main(void) {
         //Comprobamos el nivel de batería
         nivBateria = adcRead_mV(AIN4);
         nivBateria = (nivBateria * 100) / 600;
+        
+        //Escritura de la pantalla
         ILI9486_DrawNumber(200, 50, 500, BLACK, WHITE, 8);
             
         if(nivBateria > 50) {
@@ -73,17 +78,12 @@ void main(void) {
         peso = HX711Read();
         
         printf("Peso: %lu\nMuestra: %d\n\n", peso, numMuestra++);
-        tMEDICION = tickRead();
         
         //Led de Heartbeat
         if (tickRead()-tLED > 100){
             PIN_LED = !PIN_LED;
             tLED = tickRead();
         }
-    }   //Fin del main()
-}
-/*==================[definiciones de funciones internas]=====================*/
-
-
-
+    }
+}   //Fin del main()
 /******************************************************************************/
