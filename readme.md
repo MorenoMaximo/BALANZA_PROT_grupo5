@@ -80,4 +80,9 @@ v0.8    - Control de batería
 - :red_square: Se terminó la medición del tiempo de muestreo, determinando el mismo en alrededor de *100ms*
 - :red_square: Se eliminaron algunas lineas ya obsoletas
 
-v0.8.1
+v0.8.1  - "Ladrón de clock"
+- :green_square: Se corrigió la asignación del pin analógico para el **ADC**
+- :thought_balloon: Luego de una extensa investigación, se llegó a la conclusión de que la **PANTALLA** utiliza muchos recursos del **PIC16F887**
+    como resultado, el **HX711** no conseguía los ciclos de clock necesarios para concretar si quiera una medición (básicamente estaba bloqueado
+    por culpa de la **PANTALLA**)
+- :green_square: Se cambiaron los tiempos de ejecución de cada driver para que todos accedan correctamente a los recursos del microcontrolador

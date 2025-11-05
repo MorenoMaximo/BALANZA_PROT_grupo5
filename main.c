@@ -58,22 +58,22 @@ void main(void) {
         //Comprobamos el nivel de batería
         nivBateria = adcRead_mV(AIN4);
         nivBateria = (nivBateria * 100) / 600;
-        if(tickRead() - tMEDICION > 250) {
-            peso = HX711Read();
-            ILI9486_DrawNumber(200, 50, 500, BLACK, WHITE, 8);
+        ILI9486_DrawNumber(200, 50, 500, BLACK, WHITE, 8);
             
-            if(nivBateria > 50) {
-                ILI9486_DrawNumber(33, 310, nivBateria, GREEN, WHITE, 6);
-            }
-            else if(nivBateria > 20) {
-                ILI9486_DrawNumber(33, 310, nivBateria, YELLOW, WHITE, 6);
-            }
-            else {
-                ILI9486_DrawNumber(33, 325, nivBateria, RED, WHITE, 6);                
-            }
-            printf("Peso: %lu\nMuestra: %d\n\n", peso, numMuestra);
-            tMEDICION = tickRead();
+        if(nivBateria > 50) {
+            ILI9486_DrawNumber(33, 310, nivBateria, GREEN, WHITE, 6);
         }
+        else if(nivBateria > 20) {
+            ILI9486_DrawNumber(33, 310, nivBateria, YELLOW, WHITE, 6);
+        }
+        else {
+            ILI9486_DrawNumber(33, 325, nivBateria, RED, WHITE, 6);                
+        }
+
+        peso = HX711Read();
+        
+        printf("Peso: %lu\nMuestra: %d\n\n", peso, numMuestra++);
+        tMEDICION = tickRead();
         
         //Led de Heartbeat
         if (tickRead()-tLED > 100){

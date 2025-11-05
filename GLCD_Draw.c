@@ -218,6 +218,6 @@ void DrawTemplate(uint16_t color, uint16_t bg_color) {
     ILI9486_DrawNumber(135, 310, 100, color, bg_color, 6);
     
     //Porcentaje de Suero
-    ILI9486_DrawNumber(45, 20, 100, color, bg_color, 8);
+    ILI9486_DrawNumber(45, 50, 100, color, bg_color, 8);
 
 }

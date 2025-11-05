@@ -46,11 +46,19 @@
 void appInit(void) {
     /* TODO: Inicializar Ports/PerifÃ©ricos/Interrupciones */
 
-    /* Configura funciones analÃ³gicas y direcciÃ³n de los Ports de I/O */
+    /* Configura funciones analógicas y dirección de los Ports de I/O */
+    //Configura las entradas y salidas como digitales
     ANSEL  = 0;
     ANSELH = 0;
-    ANS1 = 1;
     
+    // Activo SOLO AN4 (RA5) como analógico para el ADC
+    ANS4 = 1;
+    
+    // Apagar comparadores (muy importante)
+    C1ON = 0; 
+    C2ON = 0;
+
+
     //Pines Genericos
     TRIS_LED    = 0;   
     TRIS_BUZZER = 0;
@@ -58,6 +66,7 @@ void appInit(void) {
     //Configuracion del HX711
     TRIS_DT     = 1;
     TRIS_SCK    = 0;
+    PIN_SCK = 0;
     
     //Configuracion del Encoder
     TRIS_ENCA   = 1;
