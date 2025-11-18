@@ -15,11 +15,13 @@
 #define START_UP_DELAY  100
 #define CHECKSUM_MASK   0x800000
 #define CANT_PROMEDIO   10
-
+extern float CALIB_SCALE;   // raw units per gram
 /*==================[declaraciones de funciones externas]====================*/
 unsigned long HX711Read(void);      //Lectura del HX711
 unsigned long TaraSet(void);        //Ajuste de la Tara
 unsigned long HX711Promedio(void);  //Lectura con promedio
 unsigned long LecturaPeso(void);    //Tomar una muestra del HX711
+float PesoEnGramos(void);           //Medición calibrada
+//void Calibrar(void);                //Mide el CALIB_SCALE
 /*==================[fin del archivo]========================================*/
 #endif// HX711_H

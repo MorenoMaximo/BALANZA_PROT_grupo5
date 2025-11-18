@@ -1,7 +1,7 @@
 # Balanza Medidora de Suero para PIC16F887
 Para trabajar con el compilador XC8(v2.40) con MPLABX IDE v6.20
 
-## Versión Actual: 0.8.1 :floppy_disk:
+## Versión Actual: 0.8.2 :floppy_disk:
 
 ## Módulos disponibles :computer: 
 Nombre|Descripcion
@@ -86,3 +86,7 @@ v0.8.1  - "Ladrón de clock"
     como resultado, el **HX711** no conseguía los ciclos de clock necesarios para concretar si quiera una medición (básicamente estaba bloqueado
     por culpa de la **PANTALLA**)
 - :green_square: Se cambiaron los tiempos de ejecución de cada driver para que todos accedan correctamente a los recursos del microcontrolador
+
+v0.8.2  - Corrección de error en la balanza
+- :blue_square: Con la ayuda de la IA (honestidad ante todo), realizamos un código para sacar el factor de calibración `"CALIB_FACTOR"`
+- :blue_square: Realizamos un código para medir con un peso conocido y que nos dé un valor cercano a este
